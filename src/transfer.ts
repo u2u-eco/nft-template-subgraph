@@ -1,10 +1,12 @@
-import {Item, User} from "../generated/schema";
+import {Item, TransferHistory, User} from "../generated/schema";
 import {URC721} from "../generated/NFTItem/URC721";
 import {Transfer} from "../generated/NFTItem/URC4906";
 import {ContractAddress} from "./const";
 
 export function tokenTransfer(event: Transfer): void {
   /* load the token from the existing Graph Node */
+
+
 
   let token = Item.load(event.params.tokenId.toString())
   if (!token) {
@@ -25,6 +27,20 @@ export function tokenTransfer(event: Transfer): void {
   if (!user) {
     user = new User(event.params.to.toHexString())
     user.save()
+  }
+
+  // Store transfer as history
+  let transferHistoryID = event.transaction.hash.toHexString().concat("-" + event.transactionLogIndex.toString())
+  let transferHistory = TransferHistory.load(transferHistoryID)
+  if (!transferHistory){
+    // Should be here always
+    transferHistory = new TransferHistory(transferHistoryID)
+    transferHistory.from = event.params.from.toHexString()
+    transferHistory.txHash = event.transaction.hash.toHexString()
+    transferHistory.to = event.params.to.toHexString()
+    transferHistory.tokenID = event.params.tokenId
+    transferHistory.transferAt = event.block.timestamp
+
   }
 }
 
