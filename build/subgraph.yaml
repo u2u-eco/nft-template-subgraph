@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: NFTItem
@@ -18,7 +18,7 @@ dataSources:
         - Owner
       abis:
         - name: URC1155
-          file: ./abis/URC1155.json
+          file: NFTItem/abis/URC1155.json
       eventHandlers:
         - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleTransfer
@@ -26,4 +26,4 @@ dataSources:
           handler: handleURI
         - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
           handler: handleTransferBatch
-      file: ./src/event.ts
+      file: NFTItem/NFTItem.wasm
