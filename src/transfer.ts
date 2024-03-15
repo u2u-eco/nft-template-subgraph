@@ -47,6 +47,7 @@ export function tokenTransfer(event: TransferSingle): void {
     log.info('token id: ', [event.params.id.toString()])
     transferHistory.tokenID = event.params.id
     transferHistory.transferAt = event.block.timestamp
+    transferHistory.quantity = event.params.value
     transferHistory.save();
   }
 }
@@ -87,6 +88,7 @@ export function tokenTransferBatch(event: TransferBatch): void {
       transferHistory.to = event.params.to.toHexString()
       transferHistory.tokenID = event.params.ids[i]
       transferHistory.transferAt = event.block.timestamp
+      transferHistory.quantity = event.params.values[i]
       transferHistory.save()
     }
   }
