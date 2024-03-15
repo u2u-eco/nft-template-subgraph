@@ -2,6 +2,7 @@ type Item @entity {
   id: ID!
   tokenID: BigInt!
   tokenURI: String!
+  balance: BigInt!
   owner: [UserBalance!]! @derivedFrom(field: "token")
 }
 
@@ -32,4 +33,5 @@ type TransferHistory @entity {
   from: User!
   to: User!
   transferAt: BigInt!
+  quantity: BigInt!
 }

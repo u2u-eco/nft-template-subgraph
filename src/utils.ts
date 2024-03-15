@@ -29,6 +29,7 @@ export function fetchOrCreateUniceranOwnerBalance(tokenId: string, owner: string
       uniceran.id = tokenId;
       uniceran.tokenID = BigInt.fromString(tokenId)
       uniceran.tokenURI = '';
+      uniceran.balance = BigInt.fromString('0')
     }
     return uniceran;
   }

@@ -72,6 +72,19 @@ export class Item extends Entity {
     this.set("tokenURI", Value.fromString(value));
   }
 
+  get balance(): BigInt {
+    let value = this.get("balance");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set balance(value: BigInt) {
+    this.set("balance", Value.fromBigInt(value));
+  }
+
   get owner(): Array<string> {
     let value = this.get("owner");
     if (!value || value.kind == ValueKind.NULL) {
@@ -390,5 +403,18 @@ export class TransferHistory extends Entity {
 
   set transferAt(value: BigInt) {
     this.set("transferAt", Value.fromBigInt(value));
+  }
+
+  get quantity(): BigInt {
+    let value = this.get("quantity");
+    if (!value || value.kind == ValueKind.NULL) {
+      throw new Error("Cannot return null for a required field.");
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set quantity(value: BigInt) {
+    this.set("quantity", Value.fromBigInt(value));
   }
 }

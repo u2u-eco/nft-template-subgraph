@@ -25,6 +25,7 @@ export function tokenTransfer(event: TransferSingle): void {
   } else {
     uniceranOwnerBalanceTo.owner = event.params.to.toHexString();
     uniceranOwnerBalanceTo.balance = uniceranOwnerBalanceTo.balance.plus(event.params.value);
+    uniceran.balance = uniceran.balance.plus(event.params.value);
     const nftContract = URC1155.bind(event.address);
     let tokenURIResult = nftContract.try_uri(event.params.id);
     if (!tokenURIResult.reverted) {
