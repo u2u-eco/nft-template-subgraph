@@ -1,9 +1,9 @@
-import { Item, UserBalance } from "../generated/schema";
+import { Item, User, UserBalance } from "../generated/schema";
 import { Address, BigInt } from "@graphprotocol/graph-ts/index"
 
 export function fetchOrCreateUniceranOwnerBalance(tokenId: string, owner: string, timestamp: BigInt): UserBalance {
     let id = generateCombineKey([tokenId, owner]);
-  
+    let user = fetchOrCreateOwner(owner);
     let uniceranOwnerBalance = UserBalance.load(id);
     if (uniceranOwnerBalance == null) {
       uniceranOwnerBalance = new UserBalance(tokenId);
@@ -13,6 +13,7 @@ export function fetchOrCreateUniceranOwnerBalance(tokenId: string, owner: string
       uniceranOwnerBalance.burnQuantity = BigInt.fromI32(0);
       uniceranOwnerBalance.token = tokenId;
       uniceranOwnerBalance.lastUpdated = timestamp;
+      user.save();
     }
     return uniceranOwnerBalance;
   }
@@ -30,4 +31,13 @@ export function fetchOrCreateUniceranOwnerBalance(tokenId: string, owner: string
       uniceran.tokenURI = '';
     }
     return uniceran;
+  }
+
+  export function fetchOrCreateOwner(address: string): User {
+    let owner = User.load(address);
+    if (owner == null) {
+      owner = new User(address);
+      owner.id = address;
+    }
+    return owner;
   }
