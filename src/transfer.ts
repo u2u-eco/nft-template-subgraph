@@ -10,6 +10,10 @@ export function tokenTransfer(event: TransferSingle): void {
   let uniceranOwnerBalanceFrom = fetchOrCreateUniceranOwnerBalance(event.params.id.toString(), event.params.from.toHexString(), event.block.timestamp);
   let uniceranOwnerBalanceTo = fetchOrCreateUniceranOwnerBalance(event.params.id.toString(), event.params.to.toHexString(), event.block.timestamp);
 
+  if (event.params.from == event.params.to) {
+    return;
+  }
+
   if (event.params.from.toHexString() != ZERO) {
     uniceranOwnerBalanceFrom.owner = event.params.from.toHexString();
     uniceranOwnerBalanceTo.owner = event.params.to.toHexString();
