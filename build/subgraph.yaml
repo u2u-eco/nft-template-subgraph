@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: Mars
@@ -18,15 +18,15 @@ dataSources:
         - Owner
       abis:
         - name: URC721
-          file: ./abis/URC721.json
+          file: Mars\abis\URC721.json
         - name: URC4906
-          file: ./abis/URC4906.json
+          file: Mars\abis\URC4906.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
-      file: ./src/event.ts
+      file: Mars\Mars.wasm
   - kind: ethereum
     name: Venus
     network: testnet
@@ -43,15 +43,15 @@ dataSources:
         - Owner
       abis:
         - name: URC721
-          file: ./abis/URC721.json
+          file: Venus\abis\URC721.json
         - name: URC4906
-          file: ./abis/URC4906.json
+          file: Venus\abis\URC4906.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
-      file: ./src/event.ts
+      file: Mars\Mars.wasm
   - kind: ethereum
     name: Uranus
     network: testnet
@@ -68,15 +68,15 @@ dataSources:
         - Owner
       abis:
         - name: URC721
-          file: ./abis/URC721.json
+          file: Uranus\abis\URC721.json
         - name: URC4906
-          file: ./abis/URC4906.json
+          file: Uranus\abis\URC4906.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
-      file: ./src/event.ts
+      file: Mars\Mars.wasm
   - kind: ethereum
     name: NEP
     network: testnet
@@ -93,12 +93,12 @@ dataSources:
         - Owner
       abis:
         - name: URC721
-          file: ./abis/URC721.json
+          file: NEP\abis\URC721.json
         - name: URC4906
-          file: ./abis/URC4906.json
+          file: NEP\abis\URC4906.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
-      file: ./src/event.ts
+      file: Mars\Mars.wasm
