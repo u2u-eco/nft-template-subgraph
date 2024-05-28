@@ -1,19 +1,16 @@
 import {Item, TransferHistory, User} from "../generated/schema";
 import {URC721} from "../generated/NFTItem/URC721";
 import {Transfer} from "../generated/NFTItem/URC4906";
-import {ContractAddress} from "./const";
 
 export function tokenTransfer(event: Transfer): void {
   /* load the token from the existing Graph Node */
-
 
 
   let token = Item.load(event.params.tokenId.toString())
   if (!token) {
     token = new Item(event.params.tokenId.toString())
     token.tokenID = event.params.tokenId
-    token.tokenURI = ""
-    let nftContract = URC721.bind(ContractAddress)
+    let nftContract = URC721.bind(event.address)
     let tokenURIResult = nftContract.try_tokenURI(token.tokenID)
     if (!tokenURIResult.reverted) {
       token.tokenURI = tokenURIResult.value;
@@ -28,7 +25,7 @@ export function tokenTransfer(event: Transfer): void {
     user = new User(event.params.to.toHexString())
     user.save()
   }
-
+  
   // Store transfer as history
   let transferHistoryID = event.transaction.hash.toHexString().concat("-" + event.transactionLogIndex.toString())
   let transferHistory = TransferHistory.load(transferHistoryID)

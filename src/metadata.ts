@@ -8,7 +8,7 @@ export function metadataUpdate(event: MetadataUpdate): void {
 
   let token = Item.load(event.params._tokenId.toString())
   if (token) {
-    let nftContract = URC721.bind(ContractAddress)
+    let nftContract = URC721.bind(event.address)
     let tokenURIResult = nftContract.try_tokenURI(token.tokenID)
     if (!tokenURIResult.reverted) {
       token.tokenURI = tokenURIResult.value;
