@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Venus
+    name: Uranus
     network: testnet
     source:
-      address: "0x941909270006Dd7274080Bf12EAA1fbD5FaeE3D6"
+      address: "0xDE61B885f9BDe6C46dC62Abb263eaF6CE11F46dc"
       abi: URC4906
       startBlock: 10366716
     mapping:
@@ -27,4 +27,3 @@ dataSources:
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
       file: ./src/event.ts
-  

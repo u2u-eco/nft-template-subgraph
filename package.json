@@ -1,12 +1,12 @@
 {
-  "name": "u2u-nft-template",
+  "name": "u2u-nft-the-solar-adventure",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "create-local": "graph create --node http://localhost:8020/ u2u/the-solar-adventure/venus",
-    "remove-local": "graph remove --node http://localhost:8020/ u2u/the-solar-adventure/venus",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 u2u/the-solar-adventure/venus",
+    "create-local": "graph create --node http://localhost:8020/ u2u/the-solar-adventure/uranus",
+    "remove-local": "graph remove --node http://localhost:8020/ u2u/the-solar-adventure/uranus",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 u2u/the-solar-adventure/uranus",
     "deploy-all": "npm run codegen && npm run build && npm run remove-local && npm run create-local && npm run deploy-local",
     "test": "graph test"
   },
