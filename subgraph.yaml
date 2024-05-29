@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Uranus
+    name: NEP
     network: testnet
     source:
-      address: "0xDE61B885f9BDe6C46dC62Abb263eaF6CE11F46dc"
+      address: "0x485ff0d84B747Ce4226c52deb12E872d2F0486ec"
       abi: URC4906
       startBlock: 10366716
     mapping:
@@ -27,3 +27,4 @@ dataSources:
         - event: MetadataUpdate(uint256)
           handler: handleUpdateMetadata
       file: ./src/event.ts
+
