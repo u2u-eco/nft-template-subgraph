@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: Mars
+    name: Venus
     network: testnet
     source:
-      address: "0x3cEe84D0fe1451D08DC5a1badBde0C1a04ee9A1d"
+      address: "0x941909270006Dd7274080Bf12EAA1fbD5FaeE3D6"
       abi: URC4906
       startBlock: 10366716
     mapping:
