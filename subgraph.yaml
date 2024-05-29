@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: EARTH
+    name: MECURY
     network: testnet
     source:
-      address: "0xA4Ab9153f48d3205eFDC2BaBe44fa9023233b9FE"
+      address: "0x0091BD12166d29539Db6bb37FB79670779aBf266"
       abi: URC4906
       startBlock: 10366716
     mapping:
