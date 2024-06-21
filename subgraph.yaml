@@ -3,10 +3,10 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: MECURY
+    name: AZ
     network: testnet
     source:
-      address: "0x0091BD12166d29539Db6bb37FB79670779aBf266"
+      address: "0x3Ff87C50d50AA0789d79EEeAea8c6964D182ea56"
       abi: URC4906
       startBlock: 10366716
     mapping:
